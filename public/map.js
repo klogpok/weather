@@ -44,7 +44,7 @@ class Map {
       .addEventListener('click', (e) => {
         this.updateMap(e.target, city, this.mymap.getZoom());
       })
-      .bindTooltip(`${city.name} , ${city.sys.country}`)
+      .bindTooltip(`${city.name}, ${city.sys.country}`)
       .openTooltip()
       .addTo(this.mymap);
   }

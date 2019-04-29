@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-const citiesByDefault = [293397, 2643743, 6455259, 524901, 3067696];
+const citiesByDefault = [293397, 2643743, 6455259, 524901, 3067696, 2950159, 6542283, 6356055];
 const weather = new Weather(citiesByDefault);
 const ui = new UI();
 const map = new Map();

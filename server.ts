@@ -5,13 +5,13 @@ const fs = require('fs');
 
 const server = http.createServer((req, res) => {
   // Build file path
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
+  let filePath: string = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
 
   // Extension of file
-  const extname = path.extname(filePath);
+  const extname: string = path.extname(filePath);
 
   // Initial content type
-  let contentType = '';
+  let contentType: string = '';
 
   // Check ext and set content type
   switch (extname) {
@@ -36,9 +36,6 @@ const server = http.createServer((req, res) => {
 
   // Check if contentType is text/html but no .html file extension
   if (contentType === 'text/html' && extname === '') filePath += '.html';
-
-  // // log the filePath
-  // console.log(filePath);
 
   // Read File
   fs.readFile(filePath, (err, content) => {

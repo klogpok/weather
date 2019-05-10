@@ -2,10 +2,10 @@
   "name": "weather",
   "version": "1.0.0",
   "description": "Weather",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node server.ts",
-    "start": "node server.ts"
+    "start": "ts-node server.ts"
   },
   "author": "Oleg Kleiman",
   "license": "ISC",

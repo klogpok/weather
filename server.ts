@@ -1,10 +1,14 @@
 'use strict';
 
+//import * as http from "http";
+
 import * as http from "http";
 
 //const http = require('http');
 const path = require('path');
 const fs = require('fs');
+//import * as path from 'path';
+//import * as fs from 'fs';
 
 const server = http.createServer((req: http.IncomingMessage, res: http.ServerResponse) => {
   // Build file path

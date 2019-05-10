@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<!--    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css" />-->
-      <link rel="stylesheet" href="./css/bootstrap.min.css" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <!--    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css"/>
     <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-      crossorigin=""
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+            integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+            crossorigin=""
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <title>Weather App</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-      <a class="navbar-brand" href="#">Weather App</a>
-    </nav>
-    <div class="container">
-      <div class="row">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand" href="#">Weather App</a>
+</nav>
+<div class="container">
+    <div class="row">
         <div
-          id="map"
-          class="col-md-7 mx-auto text-center text-white bg-info mt-5 border border-dark rounded"
+                id="map"
+                class="col-md-7 mx-auto text-center text-white bg-info mt-5 border border-dark rounded"
         ></div>
         <div
-          id="info-block"
-          class="col-md-4 mx-auto text-center text-white bg-info mt-5 p-4 border border-dark rounded"
+                id="info-block"
+                class="col-md-4 mx-auto text-center text-white bg-info mt-5 p-4 border border-dark rounded"
         >
-          <h3 id="w-location"></h3>
-          <h4 id="w-desc" class="text-primary text-capitalize"></h4>
-          <h5 id="w-temp"></h5>
-          <img id="w-icon" />
-          <ul id="w-details" class="list-group mt-3 text-primary text-center">
-            <li class="list-group-item text-capitalize" id="w-humidity"></li>
-            <li class="list-group-item text-capitalize" id="w-pressure"></li>
-            <li class="list-group-item" id="w-wind"></li>
-            <li class="list-group-item" id="w-sun"></li>
-          </ul>
-          <hr />
-          <div class="form-group mb-2">
-            <label class="text-white" for="w-changeCity">Select City</label>
-            <select class="form-control" id="w-changeCity"></select>
-          </div>
+            <h3 id="w-location"></h3>
+            <h4 id="w-desc" class="text-primary text-capitalize"></h4>
+            <h5 id="w-temp"></h5>
+            <img id="w-icon"/>
+            <ul id="w-details" class="list-group mt-3 text-primary text-center">
+                <li class="list-group-item text-capitalize" id="w-humidity"></li>
+                <li class="list-group-item text-capitalize" id="w-pressure"></li>
+                <li class="list-group-item" id="w-wind"></li>
+                <li class="list-group-item" id="w-sun"></li>
+            </ul>
+            <hr/>
+            <div class="form-group mb-2">
+                <label class="text-white" for="w-changeCity">Select City</label>
+                <select class="form-control" id="w-changeCity"></select>
+            </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-      crossorigin=""
-    ></script>
-    <script src="weather.js"></script>
-    <script src="storage.js"></script>
-    <script src="map.js"></script>
-    <script src="ui.js"></script>
-    <script src="app.js"></script>
-  </body>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""
+></script>
+<script src="weather.js"></script>
+<script src="map.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
 </html>

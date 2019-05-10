@@ -1,14 +1,14 @@
 body {
-  user-select: none;
-  background-color: #ECF0F1;
+    user-select: none;
+    background-color: #ECF0F1;
 }
 
 #map,
 #info-block {
-  height: 545px;
+    height: 545px;
 }
 
 .custom-icon {
-  margin-left: -12px; /* -x */
-  margin-top: -41px; /* -y */
+    margin-left: -12px; /* -x */
+    margin-top: -41px; /* -y */
 }

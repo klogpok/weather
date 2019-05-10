@@ -1,6 +1,6 @@
 "use strict";
 
-const MILLISECONDS_IN_HOUR = 60000;
+const MILLISECONDS_IN_HOUR = 3600000;
 
 class Weather {
   constructor(cities) {
@@ -35,6 +35,7 @@ class Weather {
   }
 
   checkIfTimeExpired(currentTime, localStorageTime) {
+    console.log((currentTime - localStorageTime) / MILLISECONDS_IN_HOUR);
     return (currentTime - localStorageTime) / MILLISECONDS_IN_HOUR < 1; // True if less then 1 hour
   }
 

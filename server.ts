@@ -1,17 +1,20 @@
-/* eslint-disable no-console */
-const http = require('http');
+'use strict';
+
+import * as http from "http";
+
+//const http = require('http');
 const path = require('path');
 const fs = require('fs');
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((req: http.IncomingMessage, res: http.ServerResponse) => {
   // Build file path
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
+  let filePath: string = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
 
   // Extension of file
-  const extname = path.extname(filePath);
+  const extname: string = path.extname(filePath);
 
   // Initial content type
-  let contentType = '';
+  let contentType: string = '';
 
   // Check ext and set content type
   switch (extname) {
@@ -37,15 +40,12 @@ const server = http.createServer((req, res) => {
   // Check if contentType is text/html but no .html file extension
   if (contentType === 'text/html' && extname === '') filePath += '.html';
 
-  // // log the filePath
-  // console.log(filePath);
-
   // Read File
-  fs.readFile(filePath, (err, content) => {
+  fs.readFile(filePath, (err: NodeJS.ErrnoException | null, content: string | Buffer) => {
     if (err) {
       if (err.code === 'ENOENT') {
         // Page not found
-        fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
+        fs.readFile(path.join(__dirname, 'public', '404.html'), (err: NodeJS.ErrnoException | null, content: string | Buffer) => {
           res.writeHead(200, { 'Content-Type': 'text/html' });
           res.end(content, 'utf8');
         });
@@ -62,6 +62,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

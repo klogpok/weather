@@ -1,25 +1,46 @@
-/* eslint-disable no-undef */
+"use strict";
+
+const MILLISECONDS_IN_HOUR = 3600000;
+
 class Weather {
   constructor(cities) {
     this.apiKey = '001bc132f62c2070651b5ae15d8df01b';
     this.cities = cities;
   }
 
-  // Fetch weather from API
+  // Fetch weather
   async getWeather() {
-    const citiesString = this.createApiSting();
-    const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/group?id=${citiesString}&units=metric&appid=${
-        this.apiKey
-      }`,
-    );
+    let localStorageCities = JSON.parse(localStorage.getItem("cities"));
+    let localStorageTime = JSON.parse(localStorage.getItem("date"));
+    let currentTime = new Date().getTime();
 
-    const responseData = await response.json();
+    if (localStorageCities && this.checkIfTimeExpired(currentTime, localStorageTime) ) {
+      return localStorageCities;
+    } else {
+      const citiesString = this.createApiSting();
+      const response = await fetch(
+          `http://api.openweathermap.org/data/2.5/group?id=${citiesString}&units=metric&appid=${
+              this.apiKey
+              }`,
+      );
 
-    return responseData.list;
+      const responseData = await response.json();
+      this.updateLocalStorage(responseData);
+      return responseData.list;
+    }
   }
 
   createApiSting() {
     return this.cities.length === 1 ? this.cities[0] : this.cities.join();
+  }
+
+  checkIfTimeExpired(currentTime, localStorageTime) {
+    console.log((currentTime - localStorageTime) / MILLISECONDS_IN_HOUR);
+    return (currentTime - localStorageTime) / MILLISECONDS_IN_HOUR < 1; // True if less then 1 hour
+  }
+
+  updateLocalStorage(data) {
+    localStorage.setItem("cities", JSON.stringify(data.list));
+    localStorage.setItem("date", JSON.stringify(new Date().getTime()));
   }
 }

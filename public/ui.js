@@ -1,6 +1,5 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+"use strict";
+
 class UI {
   constructor() {
     this.elSelectCities = document.getElementById('w-changeCity');
@@ -30,7 +29,8 @@ class UI {
   }
 
   renderCity(weather) {
-    this.elLocation.textContent = `${weather.name} , ${weather.sys.country}`;
+    this.elLocation.innerHTML =
+        `${weather.name} , ${weather.sys.country} <img src='http://openweathermap.org/images/flags/${weather.sys.country.toLowerCase()}.png' />`;
     this.elDesc.textContent = weather.weather[0].description;
     this.elTemp.innerHTML = `${Math.floor(weather.main.temp)} &deg;C`;
     this.elIcon.setAttribute(

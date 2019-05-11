@@ -1,6 +1,6 @@
 # Weather app
 
-Simple JavaScript aplication with usage Leaflet JS library for interactive maps, Bootstarp UI library and browser Local Storage.
+Simple JavaScript and Node.js application with usage Leaflet JS library for interactive maps, Bootstarp UI library and browser Local Storage.
 
 ## Usage:
 
